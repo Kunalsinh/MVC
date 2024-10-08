@@ -1,0 +1,28 @@
+﻿@model Exam.Models.Register 
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login Page</h2>
+
+<h1>@TempData["login_error"]</h1>
+
+@using (Html.BeginForm("Login", "Exam", FormMethod.Post)) { 
+    <div>
+        @Html.LabelFor(a => a.username,"USERNAME", new {@class="form-label"})
+        @Html.TextBoxFor(a=> a.username,"", new { @class="form-control"})
+    </div>
+
+    <div>
+        @Html.LabelFor(a => a.password, "PASSWORD", new { @class = "form-label" })
+        @Html.TextBoxFor(a => a.password, "", new { @class = "form-control" })
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary p-1 m-1">Login</button>
+    </div>
+
+    <div>
+        @Html.ActionLink("Create Account", "Create", new {@class=""})
+    </div>
+}

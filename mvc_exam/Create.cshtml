@@ -1,0 +1,34 @@
+﻿@model Exam.Models.Register
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Account</h2>
+
+@using (Html.BeginForm("Create", "Exam", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(a => a.name, "Name", new { @class = "form-label" })
+        @Html.TextBoxFor(a => a.name, "", new { @class = "form-control" })
+    </div>
+
+    <div>
+        @Html.LabelFor(a => a.gender, "Gender", new { @class = "form-label" })
+        @Html.TextBoxFor(a => a.gender, "", new { @class = "form-control" })
+    </div>
+
+    <div>
+        @Html.LabelFor(a => a.username, "Username", new { @class = "form-label" })
+        @Html.TextBoxFor(a => a.username, "", new { @class = "form-control" })
+    </div>
+
+    <div>
+        @Html.LabelFor(a => a.password, "Password", new { @class = "form-label" })
+        @Html.TextBoxFor(a => a.password, "", new { @class = "form-control" })
+    </div>
+
+    <div>
+        <button class="btn btn-primary p-1 m-1" type="submit">Register</button>
+    </div>
+}
+

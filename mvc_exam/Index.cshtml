@@ -1,0 +1,53 @@
+﻿@model List<Exam.Models.Register>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index Page</h2>
+
+
+<h1>@TempData["insert_error"]</h1>
+
+@using (Html.BeginForm("Search", "Exam", FormMethod.Post))
+{
+    <div class="p-2">
+        <input type="text" name="searchQuery" class="form-control" placeholder="Search here" />
+    </div>
+    <div>
+        <input type="radio" name="searchField" value="name" />
+        Name
+    </div>
+    <div>
+        <input type="radio"  name="searchField" value="gender" />
+        Gender
+    </div>
+
+    <div>
+        <button class="btn btn-secondary p-2 mt-2" type="submit">Search</button>
+    </div>
+
+}
+
+@using (Html.BeginForm("DeleteSelected", "Exam", FormMethod.Post))
+{
+    <table class="table table-striped">
+        <tr class="p-2">
+            <th>Select Record</th>
+            <th>NAME</th>
+            <th>GENDER</th>
+            <th>Delete Record</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr class="p-2">
+                <td><input type="checkbox" name="selectedIDs" value="@item.Id" /></td>
+                <td>@item.name</td>
+                <td>@item.gender</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })</td>
+            </tr>
+        }
+    </table>
+
+    <button class="btn btn-danger" type="submit">Delete All</button>
+}
